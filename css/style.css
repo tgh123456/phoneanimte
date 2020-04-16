@@ -1,0 +1,657 @@
+/*全局样式*/
+*{
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*清除点击阴影*/
+    -webkit-tap-highlight-color: rgba(255,255,255,0);
+    /*让字体更顺滑,无锯齿*/
+    -webkit-font-smoothing: antialiased;
+}
+body{
+    background: #fff;
+
+    /*恢复默认字体大小*/
+    font-size: 0.16rem;
+
+    /*默认的手机端字体：Helvetica，加微软雅黑是为了在PC上也能模拟类似于手机上的字体效果*/
+    font-family: "zcool-gdh",Helvetica,"微软雅黑",-apple-system,sans-serif;
+
+    line-height: 1.5;
+    /*禁止文字自动被浏览器缩放 */
+    text-size-adjust: 100%!important;
+    /*禁止莫名其妙出现的横向滚动条*/
+    overflow-x: hidden;
+}
+ol,ul,li{list-style:none;}
+img{border:none;outline:none;}
+input,button,select,textarea{font-family: "zcool-gdh"; border:none;outline:none; 
+    /*消除按钮默认的圆角外观*/
+    -webkit-appearance:none;
+    -webkit-tap-highlight-color:transparent;}
+a{text-decoration:none; outline:none;}
+/*清除浮动*/
+.clearfix:after{content:"\0020"; height:0; display:block; clear:both; overflow:hidden}
+/*文本省略号*/
+.cutFont {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+/*位置与浮动*/
+.fl   {float:left;}
+.fr   {float:right;}
+.posir{position:relative;}
+
+/*頁面样式*/
+#wrapper{
+    overflow: hidden;
+}
+html,body,#wrapper,#content,.scene{
+    width: 100%;
+    height: 100%;
+}
+#content{
+    /*让翻页速度变快点*/
+    transition: all 0.5s linear;
+}
+
+#page1{
+    background-color: red;
+}
+#page2{
+    background-color: green;
+}
+#page3{
+    background-color: blue;
+}
+
+/*场景1*/
+#page1,#page2,#page3,#page4,#page5{
+    background:url(../images/bg.png) no-repeat;
+    background-size: 100%;
+
+  }
+/*翻页*/
+.nextpage{
+     position: fixed;
+     left: 3.47rem;
+     bottom: 0.2rem;
+     width: 0.73rem;
+     height: 0.66rem;
+     background: url(../images/fanye.png) no-repeat;
+     background-size: 100%;
+
+     animation: fanye 1s infinite linear;
+
+  }
+.s1{
+  width: 3.74rem;
+  margin: 0 auto;
+  padding-top: 3.53rem;
+  text-align: center;
+  font-family: "zcool-gdh"
+}
+.p1img{
+  width: 100%;
+  display: block;
+}
+.s1 h4{
+  font-size: 0.4rem;
+}
+.s1 p{
+  font-size: 0.4rem;
+}
+.p1loading{
+  width: 3.47rem;
+}
+/*第二页*/
+.p21{
+  width:100%;
+  height: 5.37rem;
+  background: url(../images/p2/p2_02.png) no-repeat;
+  background-size: 100%;
+}
+.lun1{
+  position: absolute;
+  left: 2.17rem;
+  top:3.47rem;
+  width: 1.77rem;
+  height: 1.76rem;
+  background: url(../images/p2/p2_04.png) no-repeat;
+  background-size: 100%;
+  animation: lun 2s infinite linear;
+}
+.lun2{
+  position: absolute;
+  left: 4.58rem;
+  top:3.91rem;
+  width: 1.33rem;
+  height: 1.34rem;
+  background: url(../images/p2/p2_07.png) no-repeat;
+  background-size: 100%;
+  animation: lun 2s infinite linear;
+}
+.p22{
+  font-family: "zcool-gdh";
+  width: 6.68rem;
+  height: 5rem;
+  /*margin: 0 auto;*/
+  margin-left: 0.55rem;
+  margin-top: 0.3rem;
+  padding-top: 0.4rem;
+  background: url(../images/p2/p2_13.png) no-repeat;
+  background-size: 100%;
+  text-align: center;
+  line-height: 0.5rem;
+  font-size: 0.4rem;
+}
+
+.p22 p{
+  height: 0.5rem;
+  opacity: 0;
+}
+
+.p22 p:first-child{
+  animation: s2text 1s linear;
+  /*动画完成后定格到最后一帧，即让它保持结束状态*/
+  animation-fill-mode: forwards;
+}
+.p22 p:nth-child(2){
+  animation: s2text 1s 1s linear;
+  animation-fill-mode: forwards;
+}
+.p22 p:nth-child(3){
+  animation: s2text 1s 2s linear;
+  animation-fill-mode: forwards;
+}
+.p22 p:nth-child(4){
+  animation: s2text 1s 3s linear;
+  animation-fill-mode: forwards;
+}
+.p22 p:nth-child(5){
+  animation: s2text 1s 4s linear;
+  animation-fill-mode: forwards;
+}
+.p22 p:nth-child(6){
+  animation: s2text 1s 5s linear;
+  animation-fill-mode: forwards;
+}
+.p23{
+  width: 6.65rem;
+  height: 2.19rem;
+  margin-left: 0.5rem;
+  margin-top: -.3rem;
+
+}
+.p23 img{
+  width: 100%;
+}
+
+@keyframes lun{
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+/*文字逐行出来效果*/
+@keyframes s2text{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+
+/*翻页按钮*/
+@keyframes fanye{
+  from{
+    bottom: 0.3rem;
+  }
+  to{
+    bottom: 0.1rem;
+  }
+}
+/*第三页*/
+.s3{
+    width: 100%;
+    height: 100%;
+}
+.p3Top{
+    background: url(../images/p3/p3_01.png) no-repeat;
+    background-size: 100%;
+    width: 7.5rem;
+    height: 8.47rem;
+    position: absolute;
+    /*在动画开始前首先设置right为100%，让背景移出去*/
+    right: -100%;
+    top: 0;
+    
+}
+.p3Topdong{
+    /*调用动画*/
+    animation: rightIn 1s linear;
+    animation-fill-mode: forwards;
+}
+.p3Text1{
+    background: url(../images/p3/p3_03.png) no-repeat;
+    background-size: 100%;
+    width: 3.53rem;
+    height: 2.17rem;
+    position: absolute;
+    left: 0.78rem;
+    top: 1.8rem;
+    /*先设置透明度为0*/
+    opacity: 0;
+    
+}
+.p3Text1Dong{
+    /*再调用动画让其淡入*/
+    animation: p3text 1s 1s linear;
+    animation-fill-mode: forwards;
+}
+.p3Bot{
+    background: url(../images/p3/p3_02.png) no-repeat;
+    background-size: 100%;
+    width: 7.5rem;
+    height: 7.5rem;
+    position: absolute;
+    /*这个也一样，让背景移到舞台最左侧*/
+    left: -100%;
+    bottom: 0;
+    
+}
+.p3BotDong{
+    /*调用动画*/
+    animation: leftIn 1s 2s linear;
+    animation-fill-mode: forwards;
+}
+.p3Text2{
+    background: url(../images/p3/p3_08.png) no-repeat;
+    background-size: 100%;
+    width: 3.53rem;
+    height: 2.17rem;
+    position: absolute;
+    left:3.33rem;
+    bottom: 2.7rem;
+    opacity: 0;
+    
+}
+.p3Text2Dong{
+    /*再调用动画让其淡入*/
+    animation: p3text 1s 3s linear;
+    animation-fill-mode: forwards;
+}
+/*设置动画效果*/
+/*上班族部分从右边平移飞入，然后出现文案*/
+@keyframes rightIn{
+    from{
+        right: -100%;
+    }
+    to{
+        right: 0%;
+    }
+}
+@keyframes p3text{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+/*学生党部分总左边平移飞入*/
+@keyframes leftIn{
+    from{
+        left: -100%;
+    }
+    to{
+        left: 0%;
+    }
+}
+
+/*第四页*/
+.p4Top{
+    
+    width: 100%;
+    height: 7.5rem;
+    position: absolute;
+    left: 0%;
+    top: 0;
+}
+.p4yuan{
+    background: url(../images/p4/0_03.png) no-repeat;
+    background-size: 100%;
+    width: 4.8rem;
+    height: 4.8rem;
+    position: absolute;
+    left: 1.6rem;
+    top: 1.8rem;
+}
+.p4tudou{
+    background: url(../images/p4/p4-1_03.png) no-repeat;
+    background-size: 100%;
+    width: 2.9rem;
+    height: 1.38rem;
+    position: absolute;
+    /*left: .65rem;*/
+    left: -100%;
+    top: 5.3rem;
+    
+}
+.p4tudouDong{
+    /*调用动画*/
+    animation: leftIn2 1s linear;
+    animation-fill-mode: forwards;
+}
+.p4hongdou{
+    background: url(../images/p4/p4-1_04.png) no-repeat;
+    background-size: 100%;
+    width: 5.26rem;
+    height: 2.15rem;
+    position: absolute;
+    /*right: .85rem;*/
+    right: -100%;
+    top: 5.36rem;
+    z-index: 2;
+    
+}
+.p4hongdouDong{
+    /*调用动画*/
+    animation: rightIn2 1s 1s linear;
+    animation-fill-mode: forwards;
+}
+.p4maishui{
+    background: url(../images/p4/1_03.png) no-repeat;
+    background-size: 100%;
+    width: 6.31rem;
+    height: 5.47rem;
+    position: absolute;
+    right: .7rem;
+    /*top: 1.5rem;*/
+    opacity: 0;
+    
+    
+}
+.p4maishuiDong{
+        /*top: -100%;*/
+   /*调用动画*/
+   animation: topIn2 1s 2s linear;
+   animation-fill-mode: forwards; 
+
+}
+/*红豆从右边平移飞入，然后出现文案*/
+@keyframes rightIn2{
+    from{
+        
+        right: -100%;
+    }
+    to{
+        /*opacity: 1;*/
+        right: 0.85rem;
+    }
+}
+/*玉米从左侧移入*/
+@keyframes leftIn2{
+    from{
+        left: -100%;
+    }
+    to{
+        left: 0.65rem;
+    }
+}
+/*人和麦穗从左侧移入*/
+@keyframes topIn2{
+    from{
+        opacity: 1;
+        top: -100%;
+    }
+    to{
+        opacity: 1;
+        top: 1.5rem;
+    }
+}
+.p4Center{
+    background: url(../images/p4/0_07.png) no-repeat;
+    background-size: 100%;
+    width: 5.36rem;
+    height: 2.7rem;
+    position: absolute;
+    left: 1.2rem;
+    /*top: 1.5rem;*/
+    top: 7.74rem;
+    /*先设置为透明，再通过动画还原*/
+    opacity: 0;
+    
+}
+.p4CenterDong{
+   /*调用动画*/
+   animation: fadeIn 1s 3s linear;
+   animation-fill-mode: forwards; 
+}
+/*淡入淡出*/
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+/*表单*/
+.p4Bot{
+    position: absolute;
+    left: 0.8rem;
+    top: 10.4rem;
+    width: 6.15rem;
+    opacity: 0;
+   
+}
+.p4BotDong{
+     /*调用动画*/
+    animation: fadeIn 1s 4s linear;
+    animation-fill-mode: forwards;
+}
+.uname{
+    width: 2.9rem;
+    height: 0.8rem;
+    padding: 0 0.2rem;
+    background: url(../images/p4/p4-1_07.png) no-repeat;
+    background-size: 100%;
+    background-position: 0 0.05rem;
+    font-family: "zcool-gdh";
+    font-size: 0.24rem;
+}
+.usel{
+    margin-left: 0.2rem;
+    width: 2.9rem;
+    height: 0.8rem;
+    
+    padding: 0 0.2rem;
+    background: url(../images/p4/p4-1_06.png) no-repeat;
+    background-size: 100%;
+    background-position: 0 0.05rem;
+
+    font-family: "zcool-gdh";
+    font-size: 0.24rem;
+}
+.ubtn{
+    display: block;
+    margin-top: 0.2rem;
+     width: 6.17rem;
+     height: 1.07rem;
+    background: url(../images/p4/p4-1_05.png) no-repeat;
+    background-size: 100%;
+}
+
+/*第5页*/
+/*第五页*/
+
+.s5{
+    width: 100%;
+    height: 11.6rem;
+    position: absolute;
+    top: 1.34rem;
+    background: url(../images/p5/p5-1_02.png) no-repeat;
+    background-size: 100%;
+    /*去掉可能的滚动条*/
+    overflow: hidden;
+}
+/*表单*/
+.s5Form {
+    position: absolute;
+    top: 2.9rem;
+    left: 0;
+    width: 100%;
+    padding:0 0.2rem;
+}
+.s5Form input{
+    width: 100%;
+    display: block;
+    height: 0.68rem;
+    line-height: 0.68rem;
+    font-size: 0.6rem;
+    background-color: transparent;
+    color: #fff;
+    text-align: right;
+
+}
+.btnBox{
+    width: 99%;
+    height: 100%;
+    position: absolute;
+    top: 5rem;
+    left: 0;
+     padding: 0 0.1rem;
+}
+/*.btnList{
+    width: 100%;
+    padding: 0 0.1rem;
+}*/
+.btnleft{
+    float: left;
+    width: 75%;
+}
+.btnright{
+    float: right;
+    width: 25%;
+}      
+.btnList li{
+    
+    height: 2rem;
+    background-color: #fff;
+    font-size: 0.3rem;
+    line-height: 2rem;
+    text-align: center;
+    border-left: 0.04rem solid #000;
+    border-bottom: 0.04rem solid #000;
+}
+.btnleft li{
+    float: left;
+    width: 33.3%;
+}
+.btnList .bgOrange{
+    background-color: #ffcf10;
+}
+
+.fb{
+    font-weight: bold;
+}
+/*文字放大效果*/
+@keyframes da{
+    from,to{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(2.5);
+    }
+}
+.jia{
+    display: inline-block;
+    animation: da 1s infinite;
+}
+/*模态框*/
+.dialog{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top:0;
+
+}
+.mask{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+}
+.model{
+    width: 6.06rem;
+    height: 8.02rem;
+    background: url(../images/p5/p5-2_03.png) no-repeat;
+    background-size: 100%;
+    position: absolute;
+    top:2.64rem;
+    left: 0.6rem;
+}
+.info{
+    position: absolute;
+    top: 1.8rem;
+    left: 1rem;
+    font-size: 0.4rem;
+
+}
+.resultBox{
+   position: absolute;
+   top: 4rem;
+   left: 1.3rem;
+   text-align: center;
+   width: 3.5rem;
+}
+.resultBox h4{
+    font-size: 0.5rem;
+    color: #f86060;
+    
+}
+.resultBox p{
+    font-size: 0.3rem;
+    /*text-align: center;*/
+}
+/*音乐图标*/
+.musicIco{
+    position: fixed;
+    top:0.5rem;
+    right: 0.5rem;
+    background: url(../images/music.png) no-repeat;
+    background-size: 100%;
+    width: 0.66rem;
+    height: 0.66rem;
+    transform: rotate(30deg);
+    /*让音乐抖动*/
+    animation: music 1s infinite linear;
+}
+.musicIcoOff{
+    background-image: url(../images/music-off.png);
+
+}
+/*音乐图标的动画效果*/
+@keyframes music{
+    from{
+        transform: rotate(30deg);
+    }
+    25%{
+        transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(-30deg);
+    }
+    75%{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(30deg);
+    }
+}

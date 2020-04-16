@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script>
+      var w=document.documentElement.getBoundingClientRect().width;
+      //7.5是根据设计图的大小除以100，需要按照你的实际设计图换算
+      var bili=w/7.5;
+      document.documentElement.style.fontSize=bili+"px";
+    </script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <style type="text/css">
+      
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="content">
+        
+          <div class="scene" id="page1">
+              <div class="s1">
+              <!-- 麦穗 -->
+                <img class="p1img" src="images/p1/maisui.png">
+                <h4><img class="p1loading" src="images/p1/loading.gif" alt=""></h4>
+                <p id="p1text">0%</p>
+              </div>
+          </div>
+
+          <div class="scene" id="page2">
+            <!-- 第二页开始 -->
+            <div class="s2">
+               <div class="p21 posir">
+                 <div class="lun1"></div>
+                 <div class="lun2"></div>
+               </div>
+               <!-- 对话框 -->
+               <div class="p22">
+                  <p>
+                    随着农业技术的发展
+                  </p>
+                  <p>本应该成为主食的五谷杂粮</p>
+                  <p>却渐渐被快餐零食所取代</p>
+                  <p>人民的健康水平</p>
+                  <p id="p22-5">也在餐饮条件的变化下</p>
+                  <p>变得参差不齐</p>
+               </div>
+               <!-- 五谷杂粮图片 -->
+               <div class="p23">
+                 <img src="images/p2/p2_05.png">
+               </div>
+               <!-- 翻页 -->
+               <!-- <div class="nextpage"></div> -->
+            </div>
+          </div>
+
+          <!-- 第三页 -->
+          <div class="scene" id="page3">
+            <div class="s3 posir">
+              <div class="p3Top">
+                <div class="p3Text1"></div>
+              </div>
+              <div class="p3Bot">
+                <div class="p3Text2" id=""></div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 第四页 -->
+          <div class="scene" id="page4">
+            <div class="s4 posir">
+              <div class="p4Top">
+                <div class="p4yuan"></div>
+                <div class="p4tudou"></div>
+                <div class="p4hongdou"></div>
+                <div class="p4maishui"></div>
+              </div>
+
+              <div class="p4Center">
+                <!-- <div class="p4Text"></div> -->
+              </div>
+              <div class="p4Bot">
+                <form class="form1">
+                    <input class="uname" type="text" placeholder="请输入姓名" name="">
+                    <select class="usel">
+                      <option>选择职业</option>
+                      <option>上班族</option>
+                      <option>学生</option>
+                    </select>
+                    <div>  
+                      <button class="ubtn" type="button"></button>
+                    </div>
+                </form>
+                <!-- JS表单验证，建议就写在该页的下面，方便维护查找，如果验证代码没有共用的话 -->
+                <script>
+                  var uname=document.querySelector(".uname");
+                  var usel=document.querySelector(".usel");
+                  var ubtn=document.querySelector(".ubtn");
+                  ubtn.addEventListener("click",function(){
+                      if(uname.value==""){
+                          alert("请输入姓名！");
+                      }
+                      else if(uname.value.length>4||uname.value.length<=1){
+                        alert("昵称字符在2-4个！");
+                      }
+                      else{
+                        // 如果输入的姓名符合要求，再判断是否选择了下拉框
+                        console.log(1);
+                        if(usel.value=="学生"){
+                            // alert("跳到学生页面");
+                            oc.style.transform="translateY("+-(index+1)*innerHeight+"px)";
+                        }
+                        else if (usel.value=="上班族") {
+                           // alert("跳到上班族页面");
+                           oc.style.transform="translateY("+-(index+1)*innerHeight+"px)";
+                        }else{
+                          alert("请选择职业哦！");
+
+                        }
+                      }
+                  });
+                </script>
+              </div>
+            </div>
+  
+          </div>
+        <!-- 第5页（计算+模态框） -->
+          <div class="scene posir" id="page5">
+            <div class="s5">
+                <form class="s5Form">
+                  <input type="text" id="num5" name="" readonly="readonly" value="请点击按键">
+                  <input type="text"  id="rusult5" name="" readonly="readonly" value="开始计算">
+                </form>
+                <div class="btnBox clearfix">
+                  <ul class="btnList btnleft">
+                    <li title="100">大豆</li>
+                    <li title="100">绿豆</li>
+                    <li title="100">红豆</li>
+                    
+                    <li title="100">稻子</li>
+                    <li title="100">玉米</li>
+                    <li title="100">黑豆</li>
+                    
+                    <li title="50">软糖</li>
+                    <li title="50">雪糕</li>
+                    <li title="50">辣条</li>
+                    
+                  </ul>
+                  <ul class="btnList btnright">
+                    <li class="fb bgOrange">AC</li>
+                    <li class="fb bgOrange"><span>+</span></li>
+                    <li class="fb bgOrange">=</li>
+                    <!-- 晒晒健康值默认是不出来的 -->
+                    <li class="fb bgOrange" style="display: none;">晒晒健康值</li>
+                  </ul>
+                </div>
+            </div>
+            <script>
+              //写计算器
+              var num5=document.querySelector("#num5");
+              var rusult5=document.querySelector("#rusult5");
+              // 左边的白色按钮
+              var oLi1=document.querySelectorAll(".btnleft li");
+              // 右边的橙色按钮
+              var oLi2=document.querySelectorAll(".btnright li");
+              // 计算结果
+              var count=0; //这个地方用来存总和
+              var showText="";
+              // 点击每一种食物
+              for(var i=0;i<oLi1.length;i++){
+                oLi1[i].onclick=function(){
+                  // 第一次点击时，将提示文字清空
+                  if(num5.value=="请点击按键"&&rusult5.value=="开始计算"){
+                    num5.value=rusult5.value="";
+                  }
+                  // 首先将输入框的内容给中转变量showText,
+                  // 然后再把当前点击的食物值累加到showText中，此时showText存放的就是当前的值+之前的值，然后再将值重新更新到第一个输入框中
+                  showText=num5.value;
+
+                  showText+=this.title;
+                  num5.value=showText;
+                  // 给加法添加动画
+                  oLi2[1].querySelector("span").className="jia";
+                  // 给当前按钮添加灰色背景
+                  this.style.backgroundColor="gray"
+
+                };
+              }
+              // 点击功能按钮
+              /*点击+号时*/
+              oLi2[1].onclick=function(){
+                showText=num5.value;
+    
+                showText+=this.title+"+";
+                num5.value=showText;
+                // 给加法去掉动画
+                oLi2[1].querySelector("span").className="";
+              };
+              // 点击=号
+              oLi2[2].onclick=function(){
+                // var sum=0;
+                // 获取此时输入框中的内容
+                var num5val=num5.value.split("+");
+                // 将输入框的文本变成数组，因为输入框的值类似于：”100+100“，再计算
+                console.log(num5val)
+                // 遍历输入框的内容，输入框的内容此时变成了数组，
+                for(var i=0;i<num5val.length;i++){
+                  count+=Number(num5val[i]);
+                }
+                // count是总和
+                console.log(count);
+                // jiang
+                // count=sum;
+                // 点击等于号，将等于变成晒健康值，并且在另一个输入框中显示等级结果
+                if(count<=150){
+                  rusult5.value="差";
+                }
+                else if(count>150&&count<250){
+                  rusult5.value="良";
+                }
+                else if(count>=250){
+                  rusult5.value="优";
+                }else{
+                  rusult5.value="无";
+                }
+                this.style.display="none";
+                this.nextElementSibling.style.display="block";
+
+              };
+              // 点击AC按钮时,恢复原始状态
+              oLi2[0].onclick=function(){
+                for(var i=0;i<oLi1.length;i++){
+                  oLi1[i].style.backgroundColor="";
+                  num5.value="请点击按键";
+                  rusult5.value="开始计算";
+                  // 给加法去掉动画
+                  oLi2[1].querySelector("span").className="";
+                  // 将等于号也恢复
+                  oLi2[3].style.display="none";
+                  oLi2[2].style.display="block";
+                }
+              };
+              // 点击晒晒健康值时：将隐藏的弹出框显示出来
+              var pinjia=["您的饮食习惯较差，还需多吃健康食品，才能有足够力气工作学习哟！","您的饮食习惯正常，还需多吃健康食品，才能有足够力气工作学习哟！","您的饮食习惯很棒，再接再厉吃更多吃健康食品哟！"];
+              window.onload=function(){
+                // 获取弹出框
+                var dialog=document.querySelector(".dialog");
+                // 获取弹出框的姓名等uname
+                var info=document.querySelectorAll(".info h4");
+                // 获取弹出框的评价内容
+                var pjH4=document.querySelector(".resultBox h4");
+                var pjp=document.querySelector(".resultBox p");
+                oLi2[3].onclick=function(){
+                  // 显示弹出框
+                  dialog.style.display = 'block';
+                  // 根据分数结果来显示不同的弹框内容
+                  if(count<=150){
+                    // 显示姓名
+                    info[0].innerText="名字："+uname.value;
+                    // 显示分数
+                    info[1].innerText="分数："+count;
+                    // 显示结果
+                    info[2].innerText="结果：差";
+                    // 显示等级
+                    pjH4.innerText="差";
+                    // 显示评价
+                    pjp.innerText=pinjia[0];
+                  }
+                  else if(count>150&&count<250){
+                    // rusult5.value="良";
+                    // 显示姓名
+                    info[0].innerText="名字："+uname.value;
+                    // 显示分数
+                    info[1].innerText="分数："+count;
+                    // 显示结果
+                    info[2].innerText="结果：良";
+                    // 显示等级
+                    pjH4.innerText="良";
+                    // 显示评价
+                    pjp.innerText=pinjia[1];
+                  }
+                  else if(count>=250){
+                    // 显示姓名
+                    info[0].innerText="名字："+uname.value;
+                    // 显示分数
+                    info[1].innerText="分数："+count;
+                    // 显示结果
+                    info[2].innerText="结果：优";
+                    // 显示等级
+                    pjH4.innerText="优";
+                    // 显示评价
+                    pjp.innerText=pinjia[2];
+                  }else{
+                    info[0].innerText="无";
+                  }
+                };
+                // 点击优时关闭弹出框（仅做测试，不是考试要求）
+                pjH4.onclick=function(){
+                  dialog.style.display = 'none';
+                };
+              };
+              
+
+            </script>
+          </div>
+          <!-- <div class="scene" id="page6">04</div> -->
+
+          
+
+        </div>
+        <!-- 音乐 -->
+        <audio src="media/bgm.mp3" loop autoplay id="music"></audio>
+        <!-- 音乐图标 -->
+        <div class="musicIco" style="display: none;"></div>
+
+        <!-- 弹出框 -->
+        <div class="dialog" style="display: none;">
+            <div class="mask"></div>
+            <div class="model">
+                <div class="info">
+                    <h4>名字：</h4>
+                    <h4>分数：</h4>
+                    <h4>结果：</h4>
+                </div>
+                <div class="resultBox">
+                    <h4>优</h4>
+                    <p>您的饮食习惯良好！！</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/fun.js"></script>
+    <script>
+      var p225=document.getElementById("p22-5");
+      // 动画结束后再执行
+      // 第2页翻页，当第5段文字说明的动画效果完成后执行回调函数，给页面添加翻页按钮
+      p225.addEventListener("animationend",function(){
+        // console.log(11);
+        // 获取当前页，
+        // var scene2=document.getElementById("page2");
+        // 翻页代码为：<div class="nextpage"></div">
+        var nextpage=document.createElement("div");
+            nextpage.className="nextpage";
+            ow.appendChild(nextpage);
+      });
+    </script>
+</body>
+</html>
